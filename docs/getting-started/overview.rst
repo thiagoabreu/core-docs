@@ -6,42 +6,19 @@ various implementations, some coming from Microsoft, some coming from other comp
 groups. This document will outline the current state of the .NET ecosystem and its various 
 implementations, so you can get a good "lay of the land". 
 
-.NET Framework
---------------
-
-The .NET Framework is the premier implemetentation of the .NET Platform available for 
-Windows server and client developers. It is a very powerful, very mature framework, with 
-a huge class library (known as the **Base Class Library** or BCL for short) that supports 
-a wide variety of applications and solutions on Windows. 
-
-The additional stacks built on top the .NET Framework allow developers to build software 
-from CLI tools to rich web applications. 
-
-**Windows Forms** and **Windows Presentation Foundation** are two stacks that allow developers 
-to build desktop applications for Windows operating system. The former is focused more on LOB 
-apps, while the latter allows developers great control over the layout and provides opportunities
-to create really stunning user interfaces.
-
-**ASP.NET** is Microsoft's main web platform that runs on .NET Framework (among other things). 
-
 .NET Core
 ---------
-.NET Core is a cloud-optimized, cross-platform implementation of the .NET Platform. The roadmap 
-currently in place covers support for three main operating systems, Linux, Windows and OS X. We 
-expect the wider community to tackle porting to other operating systems as well; for instance, 
-`FreeBSD port <https://github.com/dotnet/coreclr/blob/master/Documentation/building/freebsd-instructions.md>`_ 
-is currently in progress. 
+.NET Core is a cloud-optimized, cross-platform implementation of the .NET Platform. It currently 
+supports three main operating systems: Linux, Windows and OS X. 
 
-There are several reasons why .NET Core came to be. 
+There are several reasons why we build .NET Core and why it is available currently. 
 
-**Cross-platform support** is increasingly becoming a number one ask from the wider developer 
-community. Simply put, new types of applications (such as mobile applications and modern web 
-applications) have different requirements when it comes to the underlying platforms. Developers 
-want to be able to pick and choose the platforms, especially on the cloud, for their solutions.
+**Cross-platform support** is a requirement of many developers today. It's important to use the 
+platform that has the characteristics required by the application, which, in turn, can run on the 
+platform required by users or perhaps is prescribed by corporate policy.
 
-**Open source** is a natural extension to cross-platform support. In order to support as many 
-platforms as possible, open source has so far proven as the best possible way to make sure 
-that all of the various platforms out there are supported. 
+**Open Source** because it has proven to be the best possible way to enable a larger set of 
+platforms, supported by community contribution.
 
 **Better packaging story** of the entire runtime is also something that influenced the 
 design of the runtime. We wanted to make sure that the entire runtime can be distributed 
@@ -63,6 +40,48 @@ With all of the above, the .NET Core represents a very generic, cross-platform a
 runtime that is capable of supporting multiple workloads, from cloud services, to desktop 
 applications to CLI tools. 
 
+.NET Framework
+--------------
+
+The .NET Framework is the premier implemetentation of the .NET Platform available for 
+Windows server and client developers. It is a very powerful, very mature framework, with 
+a huge class library (known as the **Framework Class Library**) that supports 
+a wide variety of applications and solutions on Windows. 
+
+The additional stacks built on top the .NET Framework allow developers to build sofware 
+in wide range from console applications to rich web applications. 
+
+`Windows Forms <https://msdn.microsoft.com/en-us/library/dd30h2yb(v=vs.110).aspx>`_ 
+and `Windows Presentation Foundation (WPF) <https://msdn.microsoft.com/en-us/library/ms754130(v=vs.110).aspx>`_ 
+are two User Interface (UI) stacks that allow you to build desktop applications for Windows 
+operating system. Windows Forms' strength is in its rich support for common databinding as well as 
+access to Windows' native user interface controls. WPF, on the other hand, allows you to exercise 
+much more control over the look and feel of your application. Both of them allow for building very 
+rich desktop applications that run on Windows, and you should pick the one that is suited for your 
+use case. 
+
+`Windows Communication Foundation (WCF) <https://msdn.microsoft.com/en-us/library/ms731082(v=vs.110).aspx>`_ 
+is a set of libraries that comprise the middleware services stack on .NET Framework. Its main goal 
+is to allow you to use one set of libraries to create services that can communicate through various 
+supported protocols using various data formats and to be hosted in any process you choose, so they 
+are not tied to any particular hosting strategy. WCF allows you to use both 
+`SOAP <https://en.wikipedia.org/wiki/SOAP>`_ and 
+`REST <https://en.wikipedia.org/wiki/Representational_state_transfr>`_ based approaches to building 
+services. 
+
+**ASP.NET** is the .NET web framework. Being a very rich framework, it has several disticnt pieces 
+which can all be used in producing modern and high-performance web applications. 
+`ASP.NET Web Forms <http://www.asp.net/web-forms>`_ is a set of tools geared primarily towards 
+developer productivity, allowing quick turnaround on web applications with a drag-and-drop surface 
+reusing web controls for everything from loging in to data binding. 
+`ASP.NET MVC <http://www.asp.net/mvc>`_ allows for a different approach, one that gives you greater 
+control over the entire pipeline, from HTTP layer to the user interface. 
+`ASP.NET WebAPI <http://www.asp.net/web-api>`_ is a convention-based framework for creating REST 
+services. It allows you to stand up a REST endpoint extremely fast. Finally, 
+`SignalR <http://www.asp.net/signalr>`_ allows you to provide push-based communication to your web 
+applications. 
+
+
 .NET Native
 -----------
 
@@ -70,9 +89,7 @@ applications to CLI tools.
 allow developers to have different build outputs. The normal .NET compilation process takes 
 the source code written in one of the .NET languages (such as C#, Visual Basic, F# etc.) and 
 produces something called "Intermediate Language". IL is then picked up by the runtime, 
-and Just-In-Time compiled at run-time to machine code. This is a very simplifed description, but 
-it works for this scope; if you want to find out more, you can read through 
-:doc:`<../concepts/managed-code>`. 
+and Just-In-Time compiled at run-time to machine code. 
 
 .NET Native is an additional step in this pipeline which takes the IL and compiles it 
 **Ahead-of-Time** (AOT) to machine code, so that when the code is executed, there is 
@@ -85,7 +102,8 @@ some security benefits.
 Supported operating systems
 ---------------------------
 
-For .NET Framework and .NET Native, the only supported system at this time is Windows. For .NET Core, Windows, Linux and OS X are supported systems. 
+For .NET Framework and .NET Native, the only supported system at this time is Windows. For .NET 
+Core, Windows, Linux and OS X are supported systems. 
 
 
 
